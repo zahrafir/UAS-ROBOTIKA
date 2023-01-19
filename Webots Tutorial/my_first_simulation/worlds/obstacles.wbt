@@ -1,0 +1,103 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.06624732555060028 0.9843742267952775 0.16315230148113907 0.9682741726886142
+  position -1.0719109826751334 -0.17104790440233308 1.3370696210348696
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0.427262 -0.436433 0.04996075999999999
+  rotation -0.003799319822131665 -0.004749149777183771 -0.9999815052016128 1.402638042470807e-15
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.432738 -0.436433 0.049960760000000014
+  rotation -0.001436305310027476 0.005745221239954442 -0.9999824645762345 1.8551315242881528e-15
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.4460997694932314 0.42966193549906767 0.04996075796219617
+  rotation -7.618097118295263e-06 -0.00018056846087165164 0.9999999836684976 0.08143389804764696
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  translation 0.16667 0.10342 -0.00116843
+  rotation 0.0015857150103262586 -0.0016462305415622252 0.9999973877130429 1.531196068012437
+  controller "epuck_go_forward"
+}
+Solid {
+  translation 0.30131811256525953 0.26098961059639214 0.09921520000000003
+  rotation -0.07376727811165716 -0.811569418558052 0.5795804237043749 2.4414221266265455
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        IBLStrength 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+    mass 1
+  }
+}
+Solid {
+  translation 0 -0.5 0.15
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.3
+      }
+    }
+    Solid {
+      translation -0.5 0.509998 0
+      rotation 0 0 1 1.5708
+      children [
+        USE WALL
+      ]
+      name "WALL2"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation 0.5 0.509998 0
+      rotation 0 0 1 1.5708
+      children [
+        USE WALL
+      ]
+      name "WALL3"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation -2.59693e-06 1 0
+      rotation 0 0 1 5.307156870259904e-06
+      children [
+        USE WALL
+      ]
+      name "WALL4"
+      boundingObject USE WALL
+    }
+  ]
+  name "WALL"
+  boundingObject USE WALL
+}

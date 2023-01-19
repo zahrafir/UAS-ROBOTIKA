@@ -1,0 +1,109 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.15925457785279015 -0.7543673405277511 -0.6368421272010965 5.559254281014666
+  position -1.5608106795163375 -1.3085605025705322 1.5690922884637841
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0.427262 -0.436433 0.04996075999999999
+  rotation -0.0127401326179029 -0.013650142090129151 -0.9998256661247488 1.464015122364361e-15
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.432738 -0.436433 0.049960760000000014
+  rotation -0.0014303611441360065 0.007151805720506829 -0.9999734025172536 1.8628409126311725e-15
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.4460995182642024 0.4296619357786238 0.04996075770824512
+  rotation -7.380177199347433e-06 -0.0001781788639102937 0.9999999840989126 0.08143151808168182
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  hidden position_0_0 1230.0767641059915
+  hidden position_0_1 1471.0223658981115
+  hidden rotation_1 0 -1 0 1.4275561012074347
+  hidden rotation_2 0 1 0 0.7570040180882669
+  translation 0.16719160345971315 0.07877656770109284 -3.196674610611745e-05
+  rotation 0.0006187781951874128 -0.0006351736272808606 0.9999996068339267 1.5446472825861866
+  controller "epuck_go_forward"
+}
+Solid {
+  translation 0.209154 0.193642 0.144375
+  rotation 0.598469077528595 0.08701771127269754 -0.7964061031703199 -0.8822053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "D:/UAS Robotika/Webots Tutorial/red_brick_wall.jpg"
+          ]
+        }
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+    mass 1
+  }
+}
+Solid {
+  translation 0 -0.5 0.15
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.3
+      }
+    }
+    Solid {
+      translation 0 1 0
+      children [
+        USE WALL
+      ]
+      name "WALL2"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation -0.5 0.499999 0
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        USE WALL
+      ]
+      name "WALL3"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation 0.5 0.5 0
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        USE WALL
+      ]
+      name "WALL4"
+      boundingObject USE WALL
+    }
+  ]
+  name "WALL"
+  boundingObject USE WALL
+}

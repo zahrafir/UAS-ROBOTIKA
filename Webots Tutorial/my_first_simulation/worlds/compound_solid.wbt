@@ -1,0 +1,170 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "dumbbell"
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.15002619058598493 -0.9420773787773462 -0.2999705894488026 5.214936752914854
+  position -0.9078506805867492 -0.29107754073684977 1.645125403590957
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0.427262 -0.436433 0.04996075999999999
+  rotation 0.013535819576739242 0.012689830853654252 -0.9998278600745687 1.5748054229091126e-15
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.432738 -0.436433 0.049960760000000014
+  rotation -0.0014101823282639027 0.014101823282377399 -0.9998995699398582 1.889496986120168e-15
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.44736178189195436 0.4311135527921852 0.04996075949166021
+  rotation -1.6539323980336773e-06 -6.010744715164887e-05 0.9999999981921797 0.054243714609540264
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+Solid {
+  translation 0 0.5 0.15
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.3
+      }
+    }
+    Solid {
+      translation 0.5 -0.5 0
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        USE WALL
+      ]
+      name "WALL2"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation -0.5 -0.5 0
+      rotation 0 0 1 -1.5707953071795862
+      children [
+        USE WALL
+      ]
+      name "WALL3"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation 5.07504e-07 -1 0
+      rotation 0 0 1 1.01503e-06
+      children [
+        USE WALL
+      ]
+      name "WALL4"
+      boundingObject USE WALL
+    }
+  ]
+  name "WALL"
+  boundingObject USE WALL
+}
+E-puck {
+  hidden position_0_0 3.1148799972374994
+  hidden position_0_1 3.1148799976406765
+  hidden rotation_1 0 1 0 3.1148799972374994
+  hidden rotation_2 0 1 0 3.1148799976406765
+  translation 0.084604574458129 0.26649039905033683 -3.1907190264418225e-05
+  rotation -0.0013619670234476606 0.0008737226234189471 0.9999986908264453 2.000816986759961
+  controller "epuck_avoid_collision"
+}
+Solid {
+  translation 0.29496729639874353 0.3915356030545787 0.09921519999999998
+  rotation 0.7438238592488949 -0.5984721320738949 -0.29758557347930453 -2.6089756566371114
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "D:/UAS Robotika/Webots Tutorial/red_brick_wall.jpg"
+          ]
+        }
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  name "BALL"
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+    mass 1
+  }
+}
+DEF DUMBBELL Solid {
+  translation -0.24 -0.210294 0.129215
+  rotation 1 0 0 1.5715802279098448
+  children [
+    DEF G0_Group Shape {
+      appearance PBRAppearance {
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.01
+      }
+    }
+    Transform {
+      translation 0 0 0.1
+      scale 2 2 2
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Sphere {
+            radius 0.03
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 -0.1
+      scale 2 2 2
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Sphere {
+            radius 0.03
+            subdivision 2
+          }
+        }
+      ]
+    }
+  ]
+  name "solid(5)"
+  boundingObject USE G0_Group
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [
+      0 0 0.01
+    ]
+  }
+}

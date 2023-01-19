@@ -1,0 +1,119 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.29393757466736364 0.32033601787037874 0.9005473545869848 1.6393908447037198
+  position 0.12623754422733346 -1.8787537012548712 1.6474430474302184
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0.427262 -0.436433 0.049960760000000014
+  rotation 0.005559590359224797 -0.011119180717726686 -0.999922724401843 1.6774389486345933e-15
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.4327380368951599 -0.4364330433861054 0.049960760000000014
+  rotation 2.3628330069595187e-09 -6.917747148681059e-10 -1 4.880688692239721e-08
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.4298856075672018 0.42765026809728185 0.049960760000000014
+  rotation 1.655205262535355e-17 9.06704045927781e-17 1 0.10072301870023351
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  hidden position_0_0 193.12050926847917
+  hidden position_0_1 179.45886820323807
+  hidden linearVelocity_0 0.012955829862442134 0.061624591033284284 -1.1017160218875102e-07
+  hidden angularVelocity_0 -0.011206346634357264 0.0023560058713187207 2.755185204829448e-09
+  hidden translation_1 0 0.025999999999999975 0.02
+  hidden rotation_1 0 1 0 4.624950053091574
+  hidden linearVelocity_1 0.012967609903642546 0.061680622427682665 1.346608039789342e-10
+  hidden angularVelocity_1 -3.084031160817312 0.6483805109205114 4.354848080231753e-08
+  hidden translation_2 0 -0.02600000000000003 0.02
+  hidden rotation_2 0 1 0 3.5296796022096473
+  hidden linearVelocity_2 0.012967609799657234 0.06168062272302776 -1.717252344986796e-10
+  hidden angularVelocity_2 -3.084031165498789 0.6483804887049363 -4.6928004584141796e-08
+  translation 0.25318842057959884 0.019092919698970923 -3.194936226347429e-05
+  rotation 0.0008923890042889396 -0.0010995133530132244 0.9999989973556231 1.3635771927188063
+  controller "epuck_avoid_collision"
+}
+Solid {
+  translation 0.39433338124840156 0.16471771745240768 0.09921519999999998
+  rotation 0.24512447489304448 -0.2674408758787864 0.931874116883604 -2.289625744840911
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "D:/UAS Robotika/Webots Tutorial/red_brick_wall.jpg"
+          ]
+        }
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+    mass 1
+  }
+  linearVelocity 0 0 3.6948222259525213e-16
+}
+Solid {
+  translation 0 -0.5 0.15
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.3
+      }
+    }
+    Solid {
+      translation -4.05307e-06 1 0
+      rotation 0 0 -1 -5.307179586466759e-06
+      children [
+        USE WALL
+      ]
+      name "WALL2"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation 0.499999 0.500001 0
+      rotation 0 0 1 1.5708
+      children [
+        USE WALL
+      ]
+      name "WALL3"
+      boundingObject USE WALL
+    }
+    Solid {
+      translation -0.500001 0.5 0
+      rotation 0 0 1 1.5708
+      children [
+        USE WALL
+      ]
+      name "WALL4"
+      boundingObject USE WALL
+    }
+  ]
+  name "WALL"
+  boundingObject USE WALL
+}
